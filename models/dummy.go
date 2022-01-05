@@ -1,0 +1,54 @@
+package models
+
+import (
+	"errors"
+	"test/gin-test/database"
+)
+
+type Dummy struct {
+	Dummy_col1 string
+	Dummy_col2 string
+	Dummy_col3 string
+}
+
+type DummyModel struct{}
+
+//Create
+func (m DummyModel) Create(col1 string, col2 string, col3 string) (err error) {
+	d1 := &Dummy{col1, col2, col3}
+	database.GetDB().AddTable(Dummy{})
+	err = database.GetDB().Insert(d1) //.Exec("INSERT INTO dummy(dummy_col1, dummy_col2, dummy_col3) VALUE(?, ?, ?)", col1, col2, col3)
+
+	return err
+}
+
+//Update ...
+func (m DummyModel) Update(col1 string, col3 string) (err error) {
+	operation, err := database.GetDB().Exec("UPDATE dummy SET dummy_col3=? WHERE dummy_col1=?", col3, col1)
+	if err != nil {
+		return err
+	}
+
+	success, _ := operation.RowsAffected()
+	if success == 0 {
+		return errors.New("updated 0 records")
+	}
+
+	return err
+}
+
+//Delete ...
+func (m DummyModel) Delete(col1 string) (err error) {
+
+	operation, err := database.GetDB().Exec("DELETE FROM dummy WHERE dummy_col1=?", col1)
+	if err != nil {
+		return err
+	}
+
+	success, _ := operation.RowsAffected()
+	if success == 0 {
+		return errors.New("no records were deleted")
+	}
+
+	return err
+}
