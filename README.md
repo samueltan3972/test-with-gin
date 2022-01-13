@@ -3,6 +3,7 @@
 This Gin project is used for basic framework review with performance analysis that can be used as reference to decide on the framework to use in microservices. To know more information, visit [Performance Result](https://github.com/samueltan3972/framework-review)
 
 ## RUN
+Install go before running the project. [https://go.dev/](https://go.dev/)
 ```
 go get .
 go run .
