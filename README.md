@@ -21,3 +21,11 @@ it comes with 3 API end point
 - /hello : return a simple hello world message
 - /database : perform all database CRUD operation
 - /fibonacci : compute and return first 5,000 fibonacci numbers
+
+
+## Help
+
+* The [Gin official website](https://gin-gonic.com/).
+* The [Gin documentation](https://gin-gonic.com/docs/).
+* The [Gin github](https://github.com/gin-gonic/gin).
+* The [Gin sample apps](https://github.com/gin-gonic/examples).
